@@ -1,0 +1,22 @@
+[Unit]
+Description=devops test task
+After=network.target
+Requires=network.target
+Requires=
+
+[Service]
+Type=simple
+ExecStart=/home/zimoff_1/task/check_proc.sh
+RestartSec=5
+Restart=on-failure
+User=zimoff_1
+Group=zimoff_1
+StandardOutput=journal
+StandardError=journal
+KillMode=process
+KillSignal=SIGTERM
+TimeoutStopSec=10
+
+[Install]
+RequiredBy=multi-user.target
+RequiredBy=network.target
